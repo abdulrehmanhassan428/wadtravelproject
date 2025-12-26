@@ -11,9 +11,9 @@ const Booking = require("./models/booking");
 const CustomizeTrip = require("./models/cutomizeTrip");
 
 const app = express();
+
 app.use(cors());
 app.use(bodyParser.json());
-
 
 app.post("/signup", async (req, res) => {
   try {
@@ -33,12 +33,9 @@ app.post("/signup", async (req, res) => {
 
     res.status(201).json({ message: "Signup successful" });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: "Signup failed" });
   }
 });
-
-
 
 app.post("/login", async (req, res) => {
   try {
@@ -56,12 +53,9 @@ app.post("/login", async (req, res) => {
 
     res.json({ message: "Login successful" });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: "Login error" });
   }
 });
-
-
 
 app.post("/book", async (req, res) => {
   try {
@@ -70,12 +64,9 @@ app.post("/book", async (req, res) => {
 
     res.status(201).json({ message: "Booking saved successfully" });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: "Booking failed" });
   }
 });
-
-
 
 app.post("/custom-trip", async (req, res) => {
   try {
@@ -84,15 +75,15 @@ app.post("/custom-trip", async (req, res) => {
 
     res.status(201).json({ message: "Customized trip saved successfully" });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: "Customized trip failed" });
   }
 });
-
 
 app.get("/", (req, res) => {
   res.send("Backend is running on Vercel");
 });
 
-module.exports = app;
-
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log("Server running on port", PORT);
+});
