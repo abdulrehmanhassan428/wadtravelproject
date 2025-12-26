@@ -73,7 +73,10 @@ app.post("/custom-trip", async (req, res) => {
     res.status(500).json({ message: "Customized trip failed" });
   }
 });
+module.exports = app;
+
 
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000");
 });
+
