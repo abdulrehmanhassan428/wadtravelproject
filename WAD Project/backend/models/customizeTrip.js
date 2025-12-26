@@ -23,5 +23,6 @@ const customizeTripSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("cutomizeTrip", customizeTripSchema);
+module.exports = mongoose.model("customizeTrip", customizeTripSchema);
+
 
