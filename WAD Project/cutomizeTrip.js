@@ -72,10 +72,40 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (isValid) {
-            alert("Booking Confirmed!");
-            window.location.href = "WadProject.html";
-        }
+    const data = {
+        destination: fields.destination.value,
+        tripDays: fields.tripDays.value,
+        groupSize: fields.groupSize.value,
+        tripType: fields.tripType.value,
+        fullName: fields.fullName.value,
+        cnic: fields.cnic.value,
+        totalPersons: fields.totalPersons.value,
+        totalBudget: fields.totalBudget.value,
+        meals: fields.meals.value,
+        guide: fields.guide.value,
+        paymentMethod: fields.paymentMethod.value,
+        phone: fields.phone.value
+    };
+
+    fetch("http://localhost:3000/custom-trip", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(result => {
+        alert(result.message);
+        window.location.href = "WadProject.html";
+    })
+    .catch(() => {
+        alert("Custom trip failed. Server error.");
+    });
+}
+
     });
 
 });
+
 
