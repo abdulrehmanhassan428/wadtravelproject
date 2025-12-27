@@ -1,3 +1,5 @@
+const BASE_URL = "https://wadtravelproject-production.up.railway.app";
+
 document.addEventListener("DOMContentLoaded", function() {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -28,13 +30,11 @@ document.addEventListener("DOMContentLoaded", function() {
             isValid = false;
         }
 
-        
         if (!passwordRegex.test(passwordInput.value.trim())) {
             passError.textContent = "Password must be 6+ chars, include uppercase, lowercase, number, and special character.";
             isValid = false;
         }
 
-        
         if (isValid) {
             const data = {
                 email: emailInput.value.trim(),
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
             };
 
             try {
-                const response = await fetch("http://localhost:3000/login", {
+                const response = await fetch(`${BASE_URL}/login`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -62,5 +62,4 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     });
-
 });
