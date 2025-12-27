@@ -73,8 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (isValid) {
             alert("Booking Confirmed!");
-            window.location.href = "WADproject.html";
+            window.location.href = "WadProject.html";
         }
     });
 
 });
+
